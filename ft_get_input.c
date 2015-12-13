@@ -6,7 +6,7 @@
 /*   By: vnoon <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/13 17:35:49 by vnoon             #+#    #+#             */
-/*   Updated: 2015/12/13 19:37:52 by vnoon            ###   ########.fr       */
+/*   Updated: 2015/12/13 20:45:22 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,19 @@ void	ft_init_dim(t_dim *dim)
 	dim->h = 0;
 }
 
+int		ft_count_near_pieces(t_tetro tetro, t_dim dim)
+{
+	int		near_blocks;
+
+	near_blocks = (((dim.y > 0) && (tetro.patern[dim.x][dim.y - 1] != '#')) +
+					((dim.y < 3) && (tetro.patern[dim.x][dim.y + 1] != '#')) +
+					((dim.x > 0) && (tetro.patern[dim.x - 1][dim.y] != '#')) +
+					((dim.x < 3) && (tetro.patern[dim.x + 1][dim.y] != '#')));
+	if (near_blocks > 3)
+		return (0);
+	return (1);
+}
+
 int		is_valid(t_tetro tetro)
 {
 	t_dim	dim;
@@ -36,12 +49,9 @@ int		is_valid(t_tetro tetro)
 		{
 			if (tetro.patern[dim.x][dim.y] == '#')
 			{
+				if (ft_count_near_pieces(tetro, dim) == 0)
+						return (0);
 				++nb_dieze;
-				if (tetro.patern[dim.x - 1][dim.y - 1] != '#' &&
-					tetro.patern[dim.x - 1][dim.y + 1] != '#' &&
-					tetro.patern[dim.x + 1][dim.y - 1] != '#' &&
-					tetro.patern[dim.x + 1][dim.y + 1] != '#')
-					return (0);
 			}
 			++dim.y;
 		}
