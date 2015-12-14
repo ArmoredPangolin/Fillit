@@ -6,7 +6,7 @@
 /*   By: vnoon <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/13 17:35:49 by vnoon             #+#    #+#             */
-/*   Updated: 2015/12/13 20:45:22 by vnoon            ###   ########.fr       */
+/*   Updated: 2015/12/14 16:31:32 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,32 +32,36 @@ int		ft_count_near_pieces(t_tetro tetro, t_dim dim)
 					((dim.x > 0) && (tetro.patern[dim.x - 1][dim.y] != '#')) +
 					((dim.x < 3) && (tetro.patern[dim.x + 1][dim.y] != '#')));
 	if (near_blocks > 3)
-		return (0);
-	return (1);
+		return (-20);
+	if (near_blocks == 0)
+		return (-20);
+	return (near_blocks);
 }
 
 int		is_valid(t_tetro tetro)
 {
 	t_dim	dim;
 	int		nb_dieze;
+	int		nb_conect;
 
 	ft_init_dim(&dim);
 	nb_dieze = 0;
+	nb_conect = 0;
 	while (dim.x < 4)
 	{
 		while (dim.y < 4)
 		{
 			if (tetro.patern[dim.x][dim.y] == '#')
 			{
-				if (ft_count_near_pieces(tetro, dim) == 0)
-						return (0);
 				++nb_dieze;
+				if ((nb_conect += ft_count_near_pieces(tetro, dim)) <= 0)
+					return (0);
 			}
 			++dim.y;
 		}
 		++dim.x;
 	}
-	if (nb_dieze != 4)
+	if ((nb_dieze != 4) || ((nb_conect != 6) && (nb_conect != 8)))
 		return (0);
 	return (1);
 }
