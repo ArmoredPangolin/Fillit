@@ -6,7 +6,7 @@
 /*   By: vnoon <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 08:11:44 by vnoon             #+#    #+#             */
-/*   Updated: 2015/12/11 13:36:32 by vnoon            ###   ########.fr       */
+/*   Updated: 2016/01/05 13:43:25 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 
 # define ABS(N) (N > 0 ? N : -N)
 # define BASE_SYMB(N) ((N > 10) ? 'A' - 10 : '0')
+# define MIN(A, B) ((A > B) ? B : A)
+# define MAX(A, B) ((A > B) ? A : B)
 
 typedef struct		s_list
 {

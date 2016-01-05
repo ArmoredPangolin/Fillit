@@ -6,7 +6,7 @@
 /*   By: vnoon <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/13 17:35:49 by vnoon             #+#    #+#             */
-/*   Updated: 2015/12/14 16:31:32 by vnoon            ###   ########.fr       */
+/*   Updated: 2016/01/05 14:32:45 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,32 @@ void	ft_init_dim(t_dim *dim)
 	dim->y = 0;
 	dim->l = 0;
 	dim->h = 0;
+}
+
+void	ft_organise_patern(t_tetro *tetro)
+{
+	int		i;
+	int		j;
+
+	i = -1;
+	j = -1;
+	while (++i < 4)
+		if (ft_strchr(tetro->patern[i], '#') == NULL)
+			while ((i + (++j)) < 4)
+				ft_swap(tetro->patern[i + j], tetro->patern[i + j], 4);
+	i = -1;
+	while (++i < 4)
+	{
+		j = 0;
+		while ((j < 4) && (tetro->patern[j][0] == '.'))
+			j++;
+		if (j == 4)
+			while (--j > 0)
+			{
+				ft_memmove(tetro->patern[j], tetro->patern[j] + 1, 3);
+				tetro->patern[j][3] = '.';
+			}
+	}
 }
 
 int		ft_count_near_pieces(t_tetro tetro, t_dim dim)
