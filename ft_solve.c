@@ -6,27 +6,12 @@
 /*   By: vnoon <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/06 10:38:49 by vnoon             #+#    #+#             */
-/*   Updated: 2016/01/06 14:38:29 by vnoon            ###   ########.fr       */
+/*   Updated: 2016/01/06 15:59:58 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "libft/libft.h"
-
-int		ft_lst_scan(t_tetro *origin)
-{
-	int		nb_tetro;
-
-	if (origin == NULL)
-		return (0);
-	nb_tetro = 1;
-	while (origin->next != NULL)
-	{
-		origin->next = origin->next->next;
-		++nb_tetro;
-	}
-	return (nb_tetro);
-}
 
 void	*ft_put_tetro(t_tetro *sol, t_tetro *tetro, int square_size)
 {
