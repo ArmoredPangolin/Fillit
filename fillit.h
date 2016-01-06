@@ -6,7 +6,7 @@
 /*   By: vnoon <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/13 18:40:03 by vnoon             #+#    #+#             */
-/*   Updated: 2016/01/05 13:40:58 by vnoon            ###   ########.fr       */
+/*   Updated: 2016/01/06 11:12:57 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ typedef	struct		s_tetro
 	char			patern[4][4];
 	struct	s_tetro	*next;
 }					t_tetro;
+
+int		do_colide(t_tetro *or, t_tetro *te);
 
 #endif

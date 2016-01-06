@@ -6,13 +6,13 @@
 /*   By: vnoon <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/11 13:31:04 by vnoon             #+#    #+#             */
-/*   Updated: 2015/12/11 13:35:52 by vnoon            ###   ########.fr       */
+/*   Updated: 2016/01/06 14:02:59 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstaddend(t_list *lst, t_list *new)
+void	ft_lstaddend(t_tetro *lst, t_tetro *new)
 {
 	if (lst && new)
 	{

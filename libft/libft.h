@@ -6,13 +6,14 @@
 /*   By: vnoon <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 08:11:44 by vnoon             #+#    #+#             */
-/*   Updated: 2016/01/05 13:43:25 by vnoon            ###   ########.fr       */
+/*   Updated: 2016/01/06 14:02:49 by vnoon            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <string.h>
+#include "../fillit.h"
 
 # define ABS(N) (N > 0 ? N : -N)
 # define BASE_SYMB(N) ((N > 10) ? 'A' - 10 : '0')
@@ -92,6 +93,6 @@ void				ft_swap(void *s1, void *s2, size_t size);
 void				ft_strrev(char *str);
 int					ft_atoi_base(const char *str, size_t base);
 char				*ft_itoa_base(int n, size_t base);
-void				ft_lstaddend(t_list *lst, t_list *new);
+void				ft_lstaddend(t_tetro *lst, t_tetro *new);
 
 #endif
